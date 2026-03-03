@@ -1,4 +1,4 @@
-# noir-fedorainstall
+# roux-fedorainstall
 
 This is a script to automate the process of setting up Fedora Linux. It is primarily intended to be run on a fresh installation of Fedora Workstation edition.
 
@@ -10,7 +10,7 @@ This is a script to automate the process of setting up Fedora Linux. It is prima
 As a regular user run the following commands from any directory under your user folder.
 
 ```
-git clone --depth 1 https://github.com/somanoir/noir-fedorainstall.git
-cd noir-fedorainstall
+git clone --depth 1 https://github.com/imroux/roux-fedorainstall.git
+cd roux-fedorainstall
 ./setup-fedora.sh
 ```
