@@ -281,23 +281,23 @@ install_ags() {
 }
 
 install_dotfiles() {
-  read -p "Would you like to install Noir Dotfiles? (y/n): " answer_dotfiles
+  read -p "Would you like to install rouxshell? (y/n): " answer_dotfiles
   case "$answer_dotfiles" in
   [Yy] | [Yy][Ee][Ss])
-    echo "→ Installing Noir Dotfiles..."
-    read -p "Would you like to install Noir Wallpapers? (y/n): " answer_wallpapers
+    echo "→ Installing rouxshell..."
+    read -p "Would you like to install Roux Wallpapers? (y/n): " answer_wallpapers
 
     cd ~ || exit
     case "$answer_wallpapers" in
     [Yy] | [Yy][Ee][Ss])
-      git clone --depth 1 --recurse-submodules https://github.com/somanoir/.noir-dotfiles.git
+      git clone --depth 1 --recurse-submodules https://github.com/imroux/rouxshell.git /home/$USER/.local/share/rouxshell
       ;;
     [Nn] | [Nn][Oo])
-      git clone --depth 1 https://github.com/somanoir/.noir-dotfiles.git
+      git clone --depth 1 https://github.com/imroux/rouxshell.git /home/$USER/.local/share/rouxshell
       ;;
     esac
-    cd .noir-dotfiles || exit
-    stow .
+    cd /home/$USER/.local/share/rouxshell || exit
+    stow . -t /home/$USER
 
     bat cache --build
     sudo flatpak override --filesystem=xdg-data/themes
@@ -305,7 +305,7 @@ install_dotfiles() {
     return 0
     ;;
   [Nn] | [Nn][Oo])
-    echo "→ Skipping installation of Noir Dotfiles..."
+    echo "→ Skipping installation of rouxshell..."
 
     return 0
     ;;
@@ -427,5 +427,5 @@ sudo systemctl enable bluetooth
 sudo systemctl enable podman
 sudo systemctl enable ollama
 
-# Install Noir Dotfiles
+# Install rouxshell
 until install_dotfiles; do :; done
